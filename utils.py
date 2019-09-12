@@ -1,3 +1,4 @@
+import random
 import re
 suffix_set = {"", "II", "III", "IV", "V", "VI", "VII", "X", "2", "3", "4", "5", "6", "7"}
 roman_plus_number_regex = 'M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$|\d$'
@@ -25,3 +26,11 @@ def generate_numbered_names(filename):
 def _generate_permutation(string):
     return [string+" "+suffix for suffix in suffix_set]
 
+def scramble_txt(filename):
+    content = None
+    with open(filename) as f:
+        content = f.readlines()
+    random.shuffle(content)
+    with open(filename, "w") as f:
+        for line in content:
+            f.write(line)

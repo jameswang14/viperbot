@@ -1,16 +1,18 @@
 from textgenrnn import textgenrnn
 
-def train(textgen, filename, weight_path="", epochs=1):
+def train(textgen, filename, weight_path, epochs=1, batch_size=128):
     textgen.train_from_file(filename, num_epochs=epochs)
-    if weight_path:
-        textgen.save(weight_path)
-    else:
-        textgen.save()
+    textgen.save(weight_path)
 
 def load(textgen, filename):
     textgen.load(filename)
 
+def load_pretrained_model(weight_path):
+    textgen = textgenrnn()
+    load(textgen, weight_path)
+    return textgen
+
 textgen = textgenrnn()
-# load(textgen, "textgenrnn_weights_saved.hdf5")
-train(textgen, "names_generated.txt", "viper_rnn_gen_texdt_weights.hdf5", 5)
-print(textgen.generate(temperature=0.5, n=50))
+# train(textgen, "names_generated.txt", "./weights/ass_plus_track_weights.hdf5", epochs=12)
+# textgen = load_pretrained_model("./weights/ass_plus_track_weights.hdf5")
+print(textgen.generate(5, temperature=0.8))
