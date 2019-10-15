@@ -12,7 +12,7 @@ def load_pretrained_model(weight_path):
     load(textgen, weight_path)
     return textgen
 
-textgen = textgenrnn()
+# textgen = textgenrnn()
 # train(textgen, "names_generated.txt", "./weights/ass_plus_track_weights.hdf5", epochs=12)
-# textgen = load_pretrained_model("./weights/ass_plus_track_weights.hdf5")
-print(textgen.generate(5, temperature=0.8))
+textgen = load_pretrained_model("./weights/ass_plus_track_weights.hdf5")
+print(textgen.generate(10, temperature=0.8))
