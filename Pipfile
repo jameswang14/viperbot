@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 requests = "*"
 textgenrnn = "*"
-tensorflow = "==2.3.2"
+tensorflow = "==2.5.3"
 Pillow = "*"
 beautifulsoup4 = "*"
 keras = "==2.3.0"
